@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="dengwei_view_sale_order_form">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="zhibaojin"/>
+                    <field name="zhibao_end_date"/>
+                    <field name="advance_payment"/>
+                    <field name="add_invoice_price"/>
+                    <field name="add_fee_price"/>
+                    <field name="custom_fee"/>
+                </xpath>
+            </field>
+        </record>
+        <!--产品编辑视图-->
+        <record id="dengwei_product_normal_form_view" model="ir.ui.view">
+            <field name="name">product.normal.form</field>
+            <field name="model">product.product</field>
+            <!--<field eval="7" name="priority"/>-->
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='categ_id']" position="after">
+                    <field name="type"/>
+                    <field name="length"/>
+                    <field name="standard"/>
+                    <field name="meter"/>
+                    <field name="sensor"/>
+                </xpath>
+            </field>
+        </record>
+
+       <!-- <record id="dengwei_view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.dengwei.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page[@string='Order Lines']/tree[@string='Sales Order Lines']" position="inside">
+                    <field name="type"/>
+                    <field name="length"/>
+                    <field name="standard"/>
+                    <field name="meter"/>
+                    <field name="sensor"/>
+                </xpath>
+            </field>
+        </record>-->
+
+        <!--发票-->
+        <!--发票-->
+        <record model="ir.ui.view" id="dengwei_view_account_invoice_form">
+            <field name="name">account.invoice.dengwei.form</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <group>
+                        <field name="zhibaojin"/>
+                        <field name="zhibao_end_date"/>
+                        <field name="advance_payment"/>
+                        <field name="add_invoice_price"/>
+                        <field name="add_fee_price"/>
+                        <field name="custom_fee"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
